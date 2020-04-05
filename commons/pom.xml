@@ -18,5 +18,6 @@
     </licenses>
     <modules>
         <module>commons-dto</module>
+        <module>commons-utils</module>
     </modules>
 </project>

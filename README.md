@@ -21,6 +21,9 @@
   - ums-admin-provider-service   系统管理员服务
 - business    业务模块
   - business-reg    注册业务
+  - business-oauth2    认证业务
+- front   前端代码
+  - vue-admin    基于vue-admin-template的vue后台管理模板
 
 
 
@@ -32,4 +35,5 @@
 
 
 
-资料来源  ： [李卫民](https://funtl.com/)   [千峰达摩院](http://qfdmy.com/)   [视频教程](https://space.bilibili.com/31137138?spm_id_from=333.788.b_765f7570696e666f.2)
+资料来源  ： [Nacos](https://github.com/alibaba/Nacos)   [SpringCloudAlibab](https://github.com/alibaba/spring-cloud-alibaba)   [Dubbo](https://github.com/apache/dubbo)  [Spring](https://spring.io/) 
+
