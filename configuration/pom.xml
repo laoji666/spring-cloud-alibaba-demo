@@ -7,7 +7,7 @@
         <artifactId>SpringCloudDemo</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>business</artifactId>
+    <artifactId>configuration</artifactId>
     <packaging>pom</packaging>
     <licenses>
         <license>
@@ -16,8 +16,6 @@
         </license>
     </licenses>
     <modules>
-        <module>business-reg</module>
-        <module>business-oauth2</module>
-        <module>business-profile</module>
+        <module>configuration-feign</module>
     </modules>
 </project>

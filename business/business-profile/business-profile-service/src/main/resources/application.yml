@@ -1,6 +1,6 @@
 spring:
   application:
-    name: business-oauth2
+    name: business-profile
   main:
     allow-bean-definition-overriding: true
   jackson:
@@ -10,9 +10,18 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: http://localhost:9001/oauth/token
+      user-authorization-uri: http://localhost:9001/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:9001/oauth/check_token
 dubbo:
   scan:
-    base-packages: com.laoji.business.controller,com.laoji.business.service
+    base-packages: com.laoji.business.controller
   protocol:
     name: dubbo
     port: -1
@@ -20,21 +29,10 @@ dubbo:
   registry:
     address: nacos://127.0.0.1
     port: 8848
-# 开启 Feign 的 OKHttp 方式
-feign:
-  okhttp:
-    enabled: true
-  httpclient:
-    enabled: false
 server:
-  port: 9001
+  port: 9002
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-base:
-  oauth2:
-    grant_type: password
-    client_id: client
-    client_secret: secret

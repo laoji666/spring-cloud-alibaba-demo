@@ -15,6 +15,7 @@
     <modules>
         <module>dependencies</module>
         <module>commons</module>
+        <module>configuration</module>
         <module>provider</module>
         <module>business</module>
         <module>gateway</module>

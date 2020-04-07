@@ -16,12 +16,19 @@
 - dependencies	统一依赖版本管理模块
 - gateway   网关
 - commons   公共对象存放
+  - commons-dto   存放公共的dto
+  - commons-utils   存放公共的工具类
+- configuration   公共配置模块
+  - configuration-feign    feign配置  这里配置了一个拦截器 用于往请求头中带上token
 - provider  服务提供者模块
   - ums-admin-provider-api	系统管理员接口
   - ums-admin-provider-service   系统管理员服务
 - business    业务模块
   - business-reg    注册业务
   - business-oauth2    认证业务
+  - business-profile    个人信息业务模块(资源服务器)  利用feign 客户端体验携带访问令牌的请求效果 
+    - business-profile-feign     将 `Feign` 接口单独暴露出来 
+    - business-profile-service    提供个人信息的服务
 - front   前端代码
   - vue-admin    基于vue-admin-template的vue后台管理模板
 

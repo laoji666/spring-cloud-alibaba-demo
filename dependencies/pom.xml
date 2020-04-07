@@ -10,6 +10,7 @@
         <!--通用型插件依赖-->
         <lombok.version>1.18.10</lombok.version>
         <okhttp3.version>4.0.1</okhttp3.version>
+        <feign.okhttp3.version>10.2.3</feign.okhttp3.version>
         <!--原生框架依赖-->
         <dubbo.version>2.7.2</dubbo.version>
         <dubbo-kryo.version>2.7.2</dubbo-kryo.version>
@@ -119,6 +120,11 @@
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
                 <version>${okhttp3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-okhttp</artifactId>
+                <version>${feign.okhttp3.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

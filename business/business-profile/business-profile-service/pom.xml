@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.laoji</groupId>
-        <artifactId>business</artifactId>
+        <artifactId>business-profile</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>business-oauth2</artifactId>
+    <artifactId>business-profile-service</artifactId>
     <packaging>jar</packaging>
     <inceptionYear>2018-Now</inceptionYear>
     <licenses>
@@ -91,31 +91,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--commons Begin-->
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-okhttp</artifactId>
-        </dependency>
-        <!--commons End-->
         <!-- Apache Dubbo End -->
         <!-- Projects Begin -->
         <dependency>
             <groupId>com.laoji</groupId>
             <artifactId>commons-dto</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.laoji</groupId>
-            <artifactId>commons-utils</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.laoji</groupId>
-            <artifactId>configuration-feign</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
@@ -136,7 +116,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.laoji.business.BusinessOAuth2Application</mainClass>
+                    <mainClass>com.laoji.business.BusinessProfileApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

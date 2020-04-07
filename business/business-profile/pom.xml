@@ -4,11 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.laoji</groupId>
-        <artifactId>SpringCloudDemo</artifactId>
+        <artifactId>business</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>business</artifactId>
+    <artifactId>business-profile</artifactId>
     <packaging>pom</packaging>
+    <inceptionYear>2018-Now</inceptionYear>
     <licenses>
         <license>
             <name>Apache 2.0</name>
@@ -16,8 +17,7 @@
         </license>
     </licenses>
     <modules>
-        <module>business-reg</module>
-        <module>business-oauth2</module>
-        <module>business-profile</module>
+        <module>business-profile-feign</module>
+        <module>business-profile-service</module>
     </modules>
 </project>

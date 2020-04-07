@@ -1,5 +1,6 @@
 package com.laoji.business.controller;
 
+import com.laoji.business.feign.ProfileFeign;
 import com.laoji.commons.dto.LoginInfo;
 import com.laoji.commons.dto.LoginParams;
 import com.laoji.commons.dto.ResponseResult;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -35,8 +37,8 @@ import java.util.Objects;
 *  @author: laoji
 *  @date:2020/4/5 16:07
 */
-@CrossOrigin(origins = "*",maxAge = 3600)
 @RestController
+@RequestMapping(value="/user")
 public class LoginController {
     private static final String URL_OAUTH_TOKEN="http://localhost:9001/oauth/token";
 
@@ -55,7 +57,9 @@ public class LoginController {
     public BCryptPasswordEncoder passwordEncoder;
     @Resource
     public TokenStore tokenStore;
-    @PostMapping(value = "/user/login")
+    @Resource
+    private ProfileFeign profileFeign;
+    @PostMapping(value = "/login")
     public ResponseResult<Map<String,Object>> login(@RequestBody LoginParams loginParams){
         Map<String,Object> result= new HashMap<>();
         // 验证密码是否正确
@@ -81,26 +85,26 @@ public class LoginController {
         return new ResponseResult<Map<String,Object>>(20000,HttpStatus.OK.toString(),result);
     }
 
-    @GetMapping(value = "/user/info")
-    public ResponseResult<LoginInfo> getInfo(){
+    @GetMapping(value = "/info")
+    public ResponseResult<LoginInfo> getInfo() throws Exception {
         // 获取认证信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String name = authentication.getName();
-        UmsAdmin umsAdmin = umsAdminService.get(name);
-        if(umsAdmin!=null){
-            LoginInfo loginInfo=new LoginInfo();
-            loginInfo.setName(umsAdmin.getNickName());
-            loginInfo.setAvatar(umsAdmin.getIcon());
-            return new ResponseResult<LoginInfo>(ResponseResult.OK,"获取登录信息成功",loginInfo);
-        }
-        return new ResponseResult<LoginInfo>(ResponseResult.FAIL,"获取登录信息失败",null);
+        // 获取个人信息
+        System.out.println(authentication.getName());
+        String jsonString = profileFeign.info(authentication.getName());
+        UmsAdmin umsAdmin = MapperUtils.json2pojoByTree(jsonString, "data", UmsAdmin.class);
+        // 封装并返回结果
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setName(umsAdmin.getNickName());
+        loginInfo.setAvatar(umsAdmin.getIcon());
+        return new ResponseResult<LoginInfo>(ResponseResult.OK,"获取登录信息成功",loginInfo);
     }
     /**
      * 注销
      *
      * @return {@link ResponseResult}
      */
-    @PostMapping(value = "/user/logout")
+    @PostMapping(value = "/logout")
     public ResponseResult<Void> logout(HttpServletRequest request) {
         // 获取 token
         String token = request.getParameter("access_token");
