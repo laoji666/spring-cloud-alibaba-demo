@@ -48,9 +48,8 @@
 </template>
 
 <script>
-import { validUsername } from '@/utils/validate'
 
-export default {
+  export default {
   name: 'Login',
   data() {
     const validateUsername = (rule, value, callback) => {

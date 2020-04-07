@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import pathToRegexp from 'path-to-regexp'
+  import pathToRegexp from 'path-to-regexp'
 
-export default {
+  export default {
   data() {
     return {
       levelList: null

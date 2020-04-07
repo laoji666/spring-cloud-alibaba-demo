@@ -1,5 +1,4 @@
 package com.laoji.provider.tests;
-import java.util.Date;
 
 import com.laoji.provider.api.UmsAdminService;
 import com.laoji.provider.domain.UmsAdmin;
@@ -15,6 +14,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @SpringBootTest

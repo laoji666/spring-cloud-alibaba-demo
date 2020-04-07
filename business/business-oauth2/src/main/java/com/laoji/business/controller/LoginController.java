@@ -6,10 +6,8 @@ import com.laoji.commons.dto.LoginParams;
 import com.laoji.commons.dto.ResponseResult;
 import com.laoji.commons.utils.MapperUtils;
 import com.laoji.commons.utils.OkHttpClientUtil;
-import com.laoji.provider.api.UmsAdminService;
 import com.laoji.provider.domain.UmsAdmin;
 import okhttp3.Response;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -19,7 +17,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,8 +48,6 @@ public class LoginController {
 
     @Resource(name = "userDetailsService")
     public UserDetailsService userDetailsService;
-    @Reference(version = "1.0.0")
-    public UmsAdminService umsAdminService;
     @Resource
     public BCryptPasswordEncoder passwordEncoder;
     @Resource

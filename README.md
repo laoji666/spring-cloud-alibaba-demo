@@ -2,14 +2,16 @@
 
 ###### 技术栈
 
-- SpringBoot   2.1.6.RELEASE
-- SpringCloudAlibaba  Greenwich.RELEASE (G版)
-- SpringCloudAlibaba Nacos  0.9.0.RELEASE
-- SpringSecurityOauth2  2.1.0.RELEASE
-- SpringCloudGateway   2.1.0.RELEASE
-- Apache Dubbo   2.7.2 
+- SpringBoot   2.1.7.RELEASE
+- SpringCloud  Greenwich.SR2
+- SpringCloudAlibaba  2.1.0.RELEASE
+- AlibabaNacos  1.1.3
+- SpringSecurityOauth2
+- SpringCloudGateway
+- Apache Dubbo   2.7.3
 - TK.MyBatis   2.1.5 
 - HikariCp  3.2.0  
+- OkHttp3   4.1.0   feign.okhttp3   10.2.3
 
 ###### 模块介绍
 

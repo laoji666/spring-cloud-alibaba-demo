@@ -1,6 +1,7 @@
 package com.laoji.commons.dto;
 
 import lombok.Data;
+
 import java.io.Serializable;
 /**
  * 通用数据传输对象

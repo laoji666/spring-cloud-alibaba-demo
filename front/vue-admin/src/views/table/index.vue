@@ -44,9 +44,9 @@
 </template>
 
 <script>
-import { getList } from '@/api/table'
+  import {getList} from '@/api/table'
 
-export default {
+  export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
