@@ -5,6 +5,7 @@ import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.model.PutObjectRequest;
 import com.laoji.cloud.dto.FileInfo;
 import com.laoji.commons.dto.ResponseResult;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,11 +27,14 @@ import java.util.UUID;
 @RestController
 @RequestMapping(value = "upload")
 public class UploadController {
-    private static final String ENDPOINT = "oss-cn-shenzhen.aliyuncs.com";
-    private static final String ACCESS_KEY_ID = "LTAIUEM4x1YOqT0O";
-    private static final String ACCESS_KEY_SECRET = "XVRECYNWqS7uzssIXeNrcgKIamBjTh";
-    private static final String BUCKET_NAME = "javasite";
-
+    @Value("${oss.ENDPOINT}")
+    private String ENDPOINT;
+    @Value("${oss.ACCESS_KEY_ID}")
+    private String ACCESS_KEY_ID;
+    @Value("${oss.ACCESS_KEY_SECRET}")
+    private String ACCESS_KEY_SECRET;
+    @Value("${oss.BUCKET_NAME}")
+    private String BUCKET_NAME;
     /**
      * 文件上传
      *
