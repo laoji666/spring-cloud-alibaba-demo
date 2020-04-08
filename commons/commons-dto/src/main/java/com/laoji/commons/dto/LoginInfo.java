@@ -11,6 +11,7 @@ import java.io.Serializable;
 */
 @Data
 public class LoginInfo implements Serializable {
+    private static final long serialVersionUID = -2849188393844424359L;
     private String name;
     private String avatar;
 }

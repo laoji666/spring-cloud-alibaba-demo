@@ -12,11 +12,16 @@
 - TK.MyBatis   2.1.5 
 - HikariCp  3.2.0  
 - OkHttp3   4.1.0   feign.okhttp3   10.2.3
+- Aliyun OSS  3.6.0
 
 ###### 模块介绍
 
 - dependencies	统一依赖版本管理模块
 - gateway   网关
+- cloud   云服务
+  - cloud-upload    阿里云OSS文件上传
+    - cloud-upload-feign   将 上传的`Feign` 接口单独暴露出来 
+    - cloud-upload-service   文件上传的服务 
 - commons   公共对象存放
   - commons-dto   存放公共的dto
   - commons-utils   存放公共的工具类

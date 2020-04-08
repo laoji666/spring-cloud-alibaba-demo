@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -90,7 +91,7 @@ public class LoginController {
         UmsAdmin umsAdmin = MapperUtils.json2pojoByTree(jsonString, "data", UmsAdmin.class);
         // 封装并返回结果
         LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setName(umsAdmin.getNickName());
+        loginInfo.setName(umsAdmin.getUsername());
         loginInfo.setAvatar(umsAdmin.getIcon());
         return new ResponseResult<LoginInfo>(ResponseResult.OK,"获取登录信息成功",loginInfo);
     }
@@ -102,9 +103,11 @@ public class LoginController {
     @PostMapping(value = "/logout")
     public ResponseResult<Void> logout(HttpServletRequest request) {
         // 获取 token
-        String token = request.getParameter("access_token");
-        // 删除 token 以注销
-        OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(token);
+        Enumeration<String> headers = request.getHeaders("authorization");
+        String tokenStr = headers.nextElement();
+        String[] strings = tokenStr.split(" ");
+        // 删除 token 以注销strings
+        OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(strings[1]);
         tokenStore.removeAccessToken(oAuth2AccessToken);
         return new ResponseResult<Void>(ResponseResult.OK, "用户已注销");
     }

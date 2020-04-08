@@ -54,4 +54,26 @@ public class UmsAdminServiceImpl implements UmsAdminService{
     public UmsAdmin get(UmsAdmin umsAdmin) {
         return umsAdminMapper.selectOne(umsAdmin);
     }
+
+    @Override
+    public int update(UmsAdmin umsAdmin) {
+        //获取用户原始信息
+        UmsAdmin oldUmsAdmin=get(umsAdmin.getUsername());
+        //修改信息
+        oldUmsAdmin.setEmail(umsAdmin.getEmail());
+        oldUmsAdmin.setNickName(umsAdmin.getNickName());
+        oldUmsAdmin.setNote(umsAdmin.getNote());
+        oldUmsAdmin.setStatus(umsAdmin.getStatus());
+        return umsAdminMapper.updateByPrimaryKey(oldUmsAdmin);
+    }
+
+    @Override
+    public int updateIcon(String userName, String path) {
+        //获取用户原始信息
+        UmsAdmin oldUmsAdmin=get(userName);
+
+        oldUmsAdmin.setIcon(path);
+
+        return umsAdminMapper.updateByPrimaryKey(oldUmsAdmin);
+    }
 }

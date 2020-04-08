@@ -17,7 +17,8 @@ import java.io.Serializable;
 @Data
 public class ResponseResult<T> implements Serializable {
     // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
-    private static final long serialVersionUID = 3468352004150968551L;
+    private static final long serialVersionUID = -8871716145102267761L;
+
     public static final int OK=20000;
     public static final int FAIL=50000;
     public static final int ILLEGAL_TOKEN=50008;

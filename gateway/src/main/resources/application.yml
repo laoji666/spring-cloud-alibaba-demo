@@ -40,6 +40,18 @@ spring:
           - Path=/api/user/**
         filters:
           - StripPrefix=1
+      - id: business-profile
+        uri: lb://business-profile
+        predicates:
+          - Path=/api/profile/**
+        filters:
+          - StripPrefix=1
+      - id: cloud-upload
+        uri: lb://cloud-upload
+        predicates:
+          - Path=/api/upload/**
+        filters:
+          - StripPrefix=1
 server:
   port: 8888
 # 配置日志级别，方别调试

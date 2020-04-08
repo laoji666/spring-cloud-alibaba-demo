@@ -18,6 +18,8 @@
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
         <spring-cloud-alibaba.verion>2.1.0.RELEASE</spring-cloud-alibaba.verion>
         <alibaba-spring-context-support.version>1.0.2</alibaba-spring-context-support.version>
+        <!--阿里云组件-->
+        <aliyun-sdk-oss.version>3.6.0</aliyun-sdk-oss.version>
     </properties>
     <licenses>
         <license>
@@ -135,6 +137,18 @@
                 <groupId>io.github.openfeign</groupId>
                 <artifactId>feign-okhttp</artifactId>
                 <version>${feign.okhttp3.version}</version>
+            </dependency>
+            <!-- Ali Cloud -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun-sdk-oss.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>

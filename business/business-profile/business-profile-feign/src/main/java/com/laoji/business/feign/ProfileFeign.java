@@ -1,9 +1,14 @@
 package com.laoji.business.feign;
 
+import com.laoji.business.dto.IconParam;
+import com.laoji.business.dto.ProfileParam;
 import com.laoji.configuration.FeignRequestConfiguration;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 /**
  * 个人信息管理
  * <p>
@@ -17,4 +22,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface ProfileFeign {
     @GetMapping(value = "info/{username}")
     String info(@PathVariable String username);
+
+    @PostMapping(value = "update")
+    String update(@RequestBody ProfileParam profileParam);
+
+    @PostMapping(value = "updateIcon")
+    String updateIcon(@RequestBody IconParam iconParam);
 }

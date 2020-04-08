@@ -30,4 +30,8 @@ public interface UmsAdminService {
      * @return {@link UmsAdmin}
      */
     UmsAdmin get(UmsAdmin umsAdmin);
+
+    int update(UmsAdmin umsAdmin);
+
+    int updateIcon(String userName,String path);
 }

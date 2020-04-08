@@ -1,6 +1,11 @@
 <template>
   <div class="app-container">
-    <el-form ref="form" :model="form" label-width="120px">
+    <el-form ref="form"
+             v-loading="formLoading"
+             :data="form"
+             element-loading-text="加载中..."
+             :model="form"
+             label-width="120px">
       <el-form-item label="Activity name">
         <el-input v-model="form.name" />
       </el-form-item>
@@ -51,6 +56,7 @@
 export default {
   data() {
     return {
+      formLoading: true,
       form: {
         name: '',
         region: '',
@@ -65,7 +71,7 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$message('submit!')
+      this.formLoading=true;
     },
     onCancel() {
       this.$message({
