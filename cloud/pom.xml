@@ -16,6 +16,7 @@
         </license>
     </licenses>
     <modules>
-        <module>cloud-upload</module>
+        <module>cloud-upload-feign</module>
+        <module>cloud-upload-service</module>
     </modules>
 </project>

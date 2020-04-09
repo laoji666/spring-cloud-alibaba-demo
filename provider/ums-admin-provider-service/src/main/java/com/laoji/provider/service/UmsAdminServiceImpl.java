@@ -1,8 +1,10 @@
 package com.laoji.provider.service;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.laoji.provider.api.UmsAdminService;
 import com.laoji.provider.domain.UmsAdmin;
 import com.laoji.provider.mapper.UmsAdminMapper;
+import com.laoji.provider.service.fallback.UmsAdminServiceFallback;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import tk.mybatis.mapper.entity.Example;
@@ -44,7 +46,9 @@ public class UmsAdminServiceImpl implements UmsAdminService{
     }
 
     @Override
+    @SentinelResource(value = "getByUserName",fallback = "getByUsernameFallback",fallbackClass = UmsAdminServiceFallback.class)
     public UmsAdmin get(String username) {
+        // 增加一段异常代码，用于测试熔断
         Example example=new Example(UmsAdmin.class);
         example.createCriteria().andEqualTo("username",username);
         return umsAdminMapper.selectOneByExample(example);
@@ -75,5 +79,12 @@ public class UmsAdminServiceImpl implements UmsAdminService{
         oldUmsAdmin.setIcon(path);
 
         return umsAdminMapper.updateByPrimaryKey(oldUmsAdmin);
+    }
+
+    @Override
+    public int updatePassword(String userName, String newPassword) {
+        UmsAdmin umsAdmin = get(userName);
+        umsAdmin.setPassword(passwordEncoder.encode(newPassword));
+        return umsAdminMapper.updateByPrimaryKey(umsAdmin);
     }
 }

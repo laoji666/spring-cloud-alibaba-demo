@@ -34,4 +34,6 @@ public interface UmsAdminService {
     int update(UmsAdmin umsAdmin);
 
     int updateIcon(String userName,String path);
+
+    int updatePassword(String userName, String newPassword);
 }

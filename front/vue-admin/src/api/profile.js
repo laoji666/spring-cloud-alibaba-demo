@@ -24,3 +24,15 @@ export function updateIcon(data) {
     data
   })
 }
+/**
+ * 更新密
+码
+* @param data
+*/
+export function updatePassword(data) {
+  return request({
+    url: '/profile/updatePassword',
+    method: 'post',
+    data
+  })
+}
