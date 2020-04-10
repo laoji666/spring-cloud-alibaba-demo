@@ -34,3 +34,9 @@ management:
     web:
       exposure:
         include: "*"
+oss:
+  ENDPOINT: oss-cn-shenzhen.aliyuncs.com
+  ACCESS_KEY_ID: LTAIUEM4x1YOqT0O
+  ACCESS_KEY_SECRET: XVRECYNWqS7uzssIXeNrcgKIamBjTh
+  BUCKET_NAME: javasite
+
