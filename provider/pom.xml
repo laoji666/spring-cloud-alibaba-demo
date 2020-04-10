@@ -69,9 +69,17 @@
             <groupId>com.alibaba.spring</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
+        <!-- Projects -->
+        <dependency>
+            <groupId>com.laoji</groupId>
+            <artifactId>commons-provider</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
     <modules>
         <module>ums-admin-provider-service</module>
         <module>ums-admin-provider-api</module>
+        <module>ums-admin-login-log-provider-service</module>
+        <module>ums-admin-login-log-provider-api</module>
     </modules>
 </project>

@@ -2,7 +2,7 @@
 
 ###### 技术栈
 
-- SpringBoot   2.1.7.RELEASE
+- SpringBoot   2.1.9.RELEASE
 - SpringCloud  Greenwich.SR2
 - SpringCloudAlibaba  2.1.0.RELEASE
 - AlibabaNacos  1.1.3
@@ -73,7 +73,19 @@ java -Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject
 -Dcsp.sentinel.dashboard.server=控制台地址
 ```
 
+关于RocketMQ  Windows部署流程
 
+1. bin目录下   执行   
+   1. start mqnamesrv.cmd 
+   2.  start mqbroker.cmd -n 127.0.0.1:9876 autoCreateTopicEnable=true 
+      1.  假如弹出提示框提示‘错误: 找不到或无法加载主类 xxxxxx’。打开runbroker.cmd，然后将‘%CLASSPATH%’加上英文双引号。保存并重新执行start语句。 
+2. 可视化插件部署   https://github.com/apache/rocketmq-externals.git 
+   1.  下载完成之后，进入‘rocketmq-externals\rocketmq-console\src\main\resources’文件夹，打开‘application.properties’进行配置。 
+      1. 主要配置端口  运行端口和rocketmq部署端口
+   2.  进入‘\rocketmq-externals\rocketmq-console’文件夹，执行‘mvn clean package -Dmaven.test.skip=true’，编译生成。 
+   3. 编译成功之后，Cmd进入‘target’文件夹，执行‘java -jar rocketmq-console-ng-1.0.0.jar’，启动‘rocketmq-console-ng-1.0.0.jar’。
+
+部署教程 =>  https://www.jianshu.com/p/4a275e779afa 
 
 
 

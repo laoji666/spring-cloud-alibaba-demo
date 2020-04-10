@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.laoji</groupId>
-        <artifactId>business</artifactId>
+        <artifactId>provider</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>business-oauth2-service</artifactId>
+    <artifactId>ums-admin-login-log-provider-service</artifactId>
     <packaging>jar</packaging>
     <inceptionYear>2018-Now</inceptionYear>
     <licenses>
@@ -20,7 +20,7 @@
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -31,21 +31,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <!-- Spring Cloud -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
-        </dependency>
-        <!-- Spring Cloud Alibaba -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-        <!-- Datasource -->
+        <!-- DataSource -->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
@@ -65,18 +51,16 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!-- Projects Begin -->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- Projects -->
         <dependency>
             <groupId>com.laoji</groupId>
-            <artifactId>business-profile-feign</artifactId>
+            <artifactId>ums-admin-login-log-provider-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.laoji</groupId>
-            <artifactId>ums-admin-provider-api</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <!-- Projects End -->
     </dependencies>
     <build>
         <plugins>
@@ -84,7 +68,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.laoji.business.BusinessOAuth2Application</mainClass>
+                    <mainClass>com.laoji.provider.UmsAdminLoginLogProviderApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
