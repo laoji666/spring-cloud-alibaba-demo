@@ -40,7 +40,7 @@
         <!-- project-->
         <dependency>
             <groupId>com.laoji</groupId>
-            <artifactId>ums-admin-provider-api</artifactId>
+            <artifactId>provider-admin-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>

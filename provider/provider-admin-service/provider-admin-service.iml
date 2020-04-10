@@ -8,11 +8,11 @@
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
-    <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/target" />
+    <content url="file://$MODULE_DIR$/../provider-admin-service">
+      <sourceFolder url="file://$MODULE_DIR$/../provider-admin-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../provider-admin-service/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../provider-admin-service/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../provider-admin-service/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -126,7 +126,7 @@
     <orderEntry type="library" name="Maven: tk.mybatis:mapper-spring:1.1.5" level="project" />
     <orderEntry type="library" name="Maven: tk.mybatis:mapper-extra:1.1.5" level="project" />
     <orderEntry type="library" name="Maven: tk.mybatis:mapper-spring-boot-autoconfigure:2.1.5" level="project" />
-    <orderEntry type="module" module-name="ums-admin-provider-api" />
+    <orderEntry type="module" module-name="provider-admin-api" />
     <orderEntry type="module" module-name="configuration-sentinel" />
     <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-apache-dubbo-adapter:1.6.3" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-core:1.6.3" level="project" />

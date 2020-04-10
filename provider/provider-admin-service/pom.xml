@@ -7,7 +7,7 @@
         <artifactId>provider</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>ums-admin-login-log-provider-service</artifactId>
+    <artifactId>provider-admin-service</artifactId>
     <packaging>jar</packaging>
     <inceptionYear>2018-Now</inceptionYear>
     <licenses>
@@ -24,13 +24,15 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- Spring Cloud -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
+
         <!-- DataSource -->
         <dependency>
             <groupId>com.zaxxer</groupId>
@@ -58,7 +60,12 @@
         <!-- Projects -->
         <dependency>
             <groupId>com.laoji</groupId>
-            <artifactId>ums-admin-login-log-provider-api</artifactId>
+            <artifactId>provider-admin-api</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.laoji</groupId>
+            <artifactId>configuration-sentinel</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
@@ -68,7 +75,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.laoji.provider.UmsAdminLoginLogProviderApplication</mainClass>
+                    <mainClass>com.laoji.provider.UmsAdminProviderApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

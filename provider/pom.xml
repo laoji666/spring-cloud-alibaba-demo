@@ -77,9 +77,9 @@
         </dependency>
     </dependencies>
     <modules>
-        <module>ums-admin-provider-service</module>
-        <module>ums-admin-provider-api</module>
-        <module>ums-admin-login-log-provider-service</module>
-        <module>ums-admin-login-log-provider-api</module>
+        <module>provider-admin-api</module>
+        <module>provider-admin-service</module>
+        <module>provider-admin-login-log-api</module>
+        <module>provider-admin-login-log-service</module>
     </modules>
 </project>
