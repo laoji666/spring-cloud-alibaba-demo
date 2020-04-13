@@ -1,5 +1,7 @@
 package com.laoji.business.controller;
 
+import com.laoji.business.BusinessException;
+import com.laoji.business.BusinessStatus;
 import com.laoji.business.feign.ProfileFeign;
 import com.laoji.cloud.api.MessageService;
 import com.laoji.cloud.dto.UmsAdminLoginLogDTO;
@@ -73,7 +75,7 @@ public class LoginController {
         // 验证密码是否正确
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginParams.getUsername());
         if (userDetails == null || !passwordEncoder.matches(loginParams.getPassword(), userDetails.getPassword())) {
-            return new ResponseResult<Map<String, Object>>(ResponseResult.FAIL, "账号或密码错误", null);
+            throw new BusinessException(BusinessStatus.ADMIN_PASSWORD);
         }
 
         Map<String,String> paramsMap= new HashMap<>();
@@ -105,7 +107,7 @@ public class LoginController {
 
         if(umsAdmin==null){
             //说明触发熔断
-            return MapperUtils.json2pojo(jsonString,ResponseResult.class);
+            throw new BusinessException(BusinessStatus.BREAKING);
         }
         // 封装并返回结果
         LoginInfo loginInfo = new LoginInfo();
