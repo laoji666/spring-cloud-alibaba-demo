@@ -68,7 +68,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.laoji.provider.UmsAdminLoginLogProviderApplication</mainClass>
+                    <mainClass>com.laoji.provider.ProviderUmsAdminLoginLogApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

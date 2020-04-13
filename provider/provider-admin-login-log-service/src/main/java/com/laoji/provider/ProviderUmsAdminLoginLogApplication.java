@@ -11,8 +11,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 */
 @SpringBootApplication
 @MapperScan(basePackages = "com.laoji.provider.mapper")
-public class UmsAdminLoginLogProviderApplication {
+public class ProviderUmsAdminLoginLogApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UmsAdminLoginLogProviderApplication.class,args);
+        SpringApplication.run(ProviderUmsAdminLoginLogApplication.class,args);
     }
 }

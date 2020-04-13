@@ -1,13 +1,19 @@
 package com.laoji.business.controller;
 
 import com.laoji.business.feign.ProfileFeign;
+import com.laoji.cloud.api.MessageService;
+import com.laoji.cloud.dto.UmsAdminLoginLogDTO;
+import com.laoji.commons.dto.IpInfo;
 import com.laoji.commons.dto.LoginInfo;
 import com.laoji.commons.dto.LoginParams;
 import com.laoji.commons.dto.ResponseResult;
 import com.laoji.commons.utils.MapperUtils;
 import com.laoji.commons.utils.OkHttpClientUtil;
+import com.laoji.commons.utils.UserAgentUtils;
+import com.laoji.provider.api.UmsAdminService;
 import com.laoji.provider.domain.UmsAdmin;
 import okhttp3.Response;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -25,6 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,8 +62,13 @@ public class LoginController {
     public TokenStore tokenStore;
     @Resource
     private ProfileFeign profileFeign;
+    @Reference(version = "1.0.0")
+    private UmsAdminService umsAdminService;
+    @Reference
+    private MessageService messageService;
+
     @PostMapping(value = "/login")
-    public ResponseResult<Map<String,Object>> login(@RequestBody LoginParams loginParams){
+    public ResponseResult<Map<String,Object>> login(@RequestBody LoginParams loginParams,HttpServletRequest request){
         Map<String,Object> result= new HashMap<>();
         // 验证密码是否正确
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginParams.getUsername());
@@ -78,6 +90,7 @@ public class LoginController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        sendLoginMessage(loginParams.getUsername(), request);
         return new ResponseResult<Map<String,Object>>(20000,HttpStatus.OK.toString(),result);
     }
 
@@ -115,5 +128,22 @@ public class LoginController {
         OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(strings[1]);
         tokenStore.removeAccessToken(oAuth2AccessToken);
         return new ResponseResult<Void>(ResponseResult.OK, "用户已注销");
+    }
+
+    private boolean sendLoginMessage(String username,HttpServletRequest request){
+        UmsAdmin umsAdmin = umsAdminService.get(username);
+        String ip = UserAgentUtils.getIpAddr(request);
+        IpInfo ipInfo = UserAgentUtils.getIpInfo(ip);
+        String region = ipInfo.getRegion();
+        String city = ipInfo.getCity();
+        String browser = UserAgentUtils.getBrowser(request).getName();
+        UmsAdminLoginLogDTO dto=new UmsAdminLoginLogDTO();
+        dto.setAdminId(umsAdmin.getId());
+        dto.setCreateTime(new Date());
+        dto.setIp(ip);
+        dto.setAddress(region+":"+city);
+        dto.setUserAgent(browser);
+
+        return messageService.sendAdminLoginLog(dto);
     }
 }

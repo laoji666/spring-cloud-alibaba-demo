@@ -1,5 +1,6 @@
 package com.laoji.provider.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import java.util.Date;
 @Data
 @Table(name = "ums_admin_login_log")
 public class UmsAdminLoginLog implements Serializable {
+
+    private static final long serialVersionUID = 203022235301678308L;
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "JDBC")
@@ -21,6 +24,7 @@ public class UmsAdminLoginLog implements Serializable {
     private Long adminId;
 
     @Column(name = "create_time")
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     @Column(name = "ip")
@@ -35,5 +39,4 @@ public class UmsAdminLoginLog implements Serializable {
     @Column(name = "user_agent")
     private String userAgent;
 
-    private static final long serialVersionUID = 1L;
 }

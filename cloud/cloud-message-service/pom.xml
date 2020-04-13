@@ -4,12 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.laoji</groupId>
-        <artifactId>business</artifactId>
+        <artifactId>cloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>business-oauth2-service</artifactId>
+    <artifactId>cloud-message-service</artifactId>
     <packaging>jar</packaging>
-    <inceptionYear>2018-Now</inceptionYear>
     <licenses>
         <license>
             <name>Apache 2.0</name>
@@ -31,57 +30,32 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
         <!-- Spring Cloud -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
+        <!-- 主要增加了 RocketMQ 依赖 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
         </dependency>
         <!-- Spring Cloud Alibaba -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-        <!-- Datasource -->
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-            <exclusions>
-                <!-- 排除 tomcat-jdbc 以使用 HikariCP -->
-                <exclusion>
-                    <groupId>org.apache.tomcat</groupId>
-                    <artifactId>tomcat-jdbc</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <!-- Projects Begin -->
-        <dependency>
-            <groupId>com.laoji</groupId>
-            <artifactId>business-profile-feign</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.laoji</groupId>
-            <artifactId>provider-admin-api</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
+        <!-- Projects -->
         <dependency>
             <groupId>com.laoji</groupId>
             <artifactId>cloud-message-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-        <!-- Projects End -->
+        <dependency>
+            <groupId>com.laoji</groupId>
+            <artifactId>cloud-message-feign</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -89,7 +63,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.laoji.business.BusinessOAuth2Application</mainClass>
+                    <mainClass>com.laoji.cloud.CloudMessageApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
