@@ -11,6 +11,7 @@ import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
 *  系统管理服务实现.
@@ -86,5 +87,10 @@ public class UmsAdminServiceImpl implements UmsAdminService{
         UmsAdmin umsAdmin = get(userName);
         umsAdmin.setPassword(passwordEncoder.encode(newPassword));
         return umsAdminMapper.updateByPrimaryKey(umsAdmin);
+    }
+
+    @Override
+    public List<String> getPermissionValueByUserName(String username) {
+        return umsAdminMapper.getPermissionValueByUserName(username);
     }
 }

@@ -52,6 +52,12 @@ spring:
           - Path=/api/upload/**
         filters:
           - StripPrefix=1
+      - id: business-product
+        uri: lb://business-product
+        predicates:
+          - Path=/api/product/**
+        filters:
+          - StripPrefix=1
 server:
   port: 8888
 # 配置日志级别，方别调试

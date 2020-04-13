@@ -69,6 +69,7 @@
             <groupId>com.alibaba.spring</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
+
         <!-- Projects -->
         <dependency>
             <groupId>com.laoji</groupId>
@@ -81,5 +82,7 @@
         <module>provider-admin-service</module>
         <module>provider-admin-login-log-api</module>
         <module>provider-admin-login-log-service</module>
+        <module>provider-product-api</module>
+        <module>provider-product-service</module>
     </modules>
 </project>

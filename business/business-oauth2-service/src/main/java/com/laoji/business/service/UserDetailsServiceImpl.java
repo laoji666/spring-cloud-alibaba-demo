@@ -29,6 +29,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         //默认授权USER
+
         List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
         GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("USER");
         grantedAuthorities.add(grantedAuthority);
@@ -37,6 +38,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         // 用户名匹配
         if (umsAdmin!=null) {
+            List<String> permissionValues = umsAdminService.getPermissionValueByUserName(s);
+            permissionValues.forEach(value->{
+                grantedAuthorities.add(new SimpleGrantedAuthority(value+""));
+            });
             return new User(umsAdmin.getUsername(), umsAdmin.getPassword(), grantedAuthorities);
         }
         // 用户名不匹配

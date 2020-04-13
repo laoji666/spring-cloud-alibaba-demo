@@ -52,7 +52,9 @@ public enum BusinessStatus {
     /**
      * 令牌已过期
      */
-    TOKEN_EXPIRED(50014, "令牌已过期");
+    TOKEN_EXPIRED(50014, "令牌已过期"),
+
+    DATA_NOT_FOUNT(50015,"未找到数据");
 
     private Integer code;
     private String message;

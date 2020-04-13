@@ -2,6 +2,8 @@ package com.laoji.provider.api;
 
 import com.laoji.provider.domain.UmsAdmin;
 
+import java.util.List;
+
 /**
 *  系统用户service
 *  @author: laoji
@@ -36,4 +38,6 @@ public interface UmsAdminService {
     int updateIcon(String userName,String path);
 
     int updatePassword(String userName, String newPassword);
+
+    List<String> getPermissionValueByUserName(String username);
 }

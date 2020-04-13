@@ -61,5 +61,7 @@
         <module>business-oauth2-service</module>
         <module>business-profile-feign</module>
         <module>business-profile-service</module>
+        <module>business-product-feign</module>
+        <module>business-product-service</module>
     </modules>
 </project>

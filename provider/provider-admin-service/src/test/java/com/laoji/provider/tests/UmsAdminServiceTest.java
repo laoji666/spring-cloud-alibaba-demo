@@ -33,11 +33,10 @@ public class UmsAdminServiceTest {
 
     @Test
     public void find(){
-        List<UmsAdmin> umsAdmins = umsAdminMapper.selectAll();
-        for (UmsAdmin u:umsAdmins
-             ) {
-            System.out.println(u);
-        }
+        List<String> admin = umsAdminService.getPermissionValueByUserName("admin");
+        admin.forEach(a->{
+            System.out.println(a);
+        });
     }
 
     @Test

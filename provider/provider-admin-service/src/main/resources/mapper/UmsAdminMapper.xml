@@ -17,7 +17,14 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated generated on Sat Apr 04 20:48:11 CST 2020.-->
-    id, username, `password`, icon, email, nick_name, note, create_time, login_time, 
+    id, username, `password`, icon, email, nick_name, note, create_time, login_time,
     `status`
   </sql>
+  <select id="getPermissionValueByUserName" resultType="string" parameterType="string">
+    select up.`value` from ums_admin ua
+    LEFT JOIN ums_admin_role_relation uarr on ua.id=uarr.admin_id
+    LEFT JOIN ums_role_permission_relation urpr on urpr.role_id=uarr.role_id
+    LEFT JOIN ums_permission up on up.id=urpr.permission_id
+    WHERE ua.username=#{username};
+  </select>
 </mapper>
