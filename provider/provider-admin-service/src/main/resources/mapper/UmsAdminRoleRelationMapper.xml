@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laoji.provider.mapper.UmsAdminRoleRelationMapper">
+  <resultMap id="BaseResultMap" type="com.laoji.provider.domain.UmsAdminRoleRelation">
+    <!--@mbg.generated generated on Tue Apr 14 18:07:11 CST 2020.-->
+    <!--@Table ums_admin_role_relation-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="admin_id" jdbcType="BIGINT" property="adminId" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Tue Apr 14 18:07:11 CST 2020.-->
+    id, admin_id, role_id
+  </sql>
+</mapper>
