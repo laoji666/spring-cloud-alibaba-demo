@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface UmsAdminMapper extends MyMapper<UmsAdmin> {
     List<String> getPermissionValueByUserName(String username);
+    List<Integer> getRoleByAdminId(Integer id);
 }

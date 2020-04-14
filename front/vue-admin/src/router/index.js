@@ -83,6 +83,34 @@ export const constantRoutes = [
   },
 
   {
+    path: '/system',
+    component: Layout,
+    redirect: '/system/index',
+    name: 'System',
+    meta: { title: '系统管理', icon: 'user' },
+    children: [
+      {
+        path: 'user',
+        name: 'User',
+        component: () => import('@/views/system/user'),
+        meta: { title: '用户管理', icon: '' }
+      },
+      {
+        path: 'add',
+        name: 'Add',
+        component: () => import('@/views/system/add'),
+        meta: { title: '添加用户', icon: '' }
+      },
+      {
+        path: 'role',
+        name: 'Role',
+        component: () => import('@/views/system/role'),
+        meta: { title: '分配角色', icon: '' },
+        hidden: true
+      }
+    ]
+  },
+  {
     path: '/product',
     component: Layout,
     redirect: '/product/index',

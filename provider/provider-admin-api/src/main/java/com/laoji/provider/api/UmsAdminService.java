@@ -1,5 +1,6 @@
 package com.laoji.provider.api;
 
+import com.github.pagehelper.PageInfo;
 import com.laoji.provider.domain.UmsAdmin;
 
 import java.util.List;
@@ -40,4 +41,9 @@ public interface UmsAdminService {
     int updatePassword(String userName, String newPassword);
 
     List<String> getPermissionValueByUserName(String username);
+    List<Integer> getRoleByAdminId(Integer adminId);
+    PageInfo<UmsAdmin> getAll(Integer pageSize, Integer pageNum);
+
+    boolean updateRole(List<Integer> newList,Integer adminId);
+
 }

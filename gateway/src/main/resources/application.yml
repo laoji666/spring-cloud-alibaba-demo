@@ -58,6 +58,12 @@ spring:
           - Path=/api/product/**
         filters:
           - StripPrefix=1
+      - id: business-system
+        uri: lb://business-system
+        predicates:
+          - Path=/api/system/**
+        filters:
+          - StripPrefix=1
 server:
   port: 8888
 # 配置日志级别，方别调试

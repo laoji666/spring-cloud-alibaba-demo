@@ -63,5 +63,7 @@
         <module>business-profile-service</module>
         <module>business-product-feign</module>
         <module>business-product-service</module>
+        <module>business-system-feign</module>
+        <module>business-system-service</module>
     </modules>
 </project>

@@ -5,10 +5,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+/**
+*
+*  @author: laoji
+*  @date:2020/4/14 13:07
+*/
 @SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
 @EnableDiscoveryClient
-public class BusinessProfileApplication {
+public class BusinessSystemApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BusinessProfileApplication.class, args);
+        SpringApplication.run(BusinessSystemApplication.class,args);
     }
 }

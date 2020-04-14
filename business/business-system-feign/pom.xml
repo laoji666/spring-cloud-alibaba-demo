@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.laoji</groupId>
-        <artifactId>provider</artifactId>
+        <artifactId>business</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>provider-product-api</artifactId>
+    <artifactId>business-system-feign</artifactId>
     <packaging>jar</packaging>
     <inceptionYear>2018-Now</inceptionYear>
     <licenses>
@@ -16,7 +16,4 @@
             <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-    <dependencies>
-
-    </dependencies>
 </project>
