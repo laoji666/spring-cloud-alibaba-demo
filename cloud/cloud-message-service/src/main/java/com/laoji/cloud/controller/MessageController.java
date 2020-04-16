@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
+/**
+*
+*  @author: laoji
+*  @date:2020/4/16 11:05
+*/
 @RestController
 @RequestMapping(value = "message")
 public class MessageController {

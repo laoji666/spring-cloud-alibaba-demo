@@ -8,15 +8,11 @@ import java.io.Serializable;
  * <p>
  * Description:
  * </p>
- *
- * @author Lusifer
- * @version v1.0.0
- * @date 2019-07-26 04:43:54
- *
- */
+*  @author: laoji
+*  @date:2020/4/16 11:08
+*/
 @Data
 public class ResponseResult<T> implements Serializable {
-    // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
     private static final long serialVersionUID = -8871716145102267761L;
 
     public static final int OK=20000;

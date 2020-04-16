@@ -34,16 +34,57 @@ public interface UmsAdminService {
      */
     UmsAdmin get(UmsAdmin umsAdmin);
 
+    /**
+     * 更新
+     * @param umsAdmin
+     * @return
+     */
     int update(UmsAdmin umsAdmin);
 
+    /**
+     * 更新头像
+     * @param userName 用户名
+     * @param path 新头像地址
+     * @return
+     */
     int updateIcon(String userName,String path);
 
+    /**
+     * 更新密码
+     * @param userName
+     * @param newPassword
+     * @return
+     */
     int updatePassword(String userName, String newPassword);
 
+    /**
+     * 根据用户名查询权限字符列表
+     * @param username
+     * @return
+     */
     List<String> getPermissionValueByUserName(String username);
+
+    /**
+     * 根据管理员id获取角色列表
+     * @param adminId
+     * @return
+     */
     List<Integer> getRoleByAdminId(Integer adminId);
+
+    /**
+     * 根据分页数据获取管理员列表
+     * @param pageSize
+     * @param pageNum
+     * @return
+     */
     PageInfo<UmsAdmin> getAll(Integer pageSize, Integer pageNum);
 
+    /**
+     * 更新管理员角色
+     * @param newList
+     * @param adminId
+     * @return
+     */
     boolean updateRole(List<Integer> newList,Integer adminId);
 
 }

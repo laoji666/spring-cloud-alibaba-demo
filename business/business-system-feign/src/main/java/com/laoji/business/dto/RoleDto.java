@@ -5,6 +5,11 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+*
+*  @author: laoji
+*  @date:2020/4/16 11:06
+*/
 @Data
 public class RoleDto implements Serializable {
 

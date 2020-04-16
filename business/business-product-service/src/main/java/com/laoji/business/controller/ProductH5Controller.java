@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+*
+*  @author: laoji
+*  @date:2020/4/16 11:05
+*/
 @RestController
 @RequestMapping("/product/h5")
 public class ProductH5Controller {

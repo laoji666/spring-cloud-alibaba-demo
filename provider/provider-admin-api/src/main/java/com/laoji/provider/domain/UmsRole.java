@@ -9,6 +9,11 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+*
+*  @author: laoji
+*  @date:2020/4/16 11:06
+*/
 @Data
 @Table(name = "ums_role")
 public class UmsRole implements Serializable {

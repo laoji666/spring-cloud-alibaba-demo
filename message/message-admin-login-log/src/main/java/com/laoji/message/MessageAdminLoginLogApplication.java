@@ -7,6 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 
+/**
+*
+*  @author: laoji
+*  @date:2020/4/16 11:05
+*/
 @SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
 @EnableBinding({AdminLoginLogSink.class})
 public class MessageAdminLoginLogApplication {

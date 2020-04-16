@@ -25,7 +25,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 */
 @Configuration
 @EnableWebSecurity
-// 增加了资源服务器配置
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {

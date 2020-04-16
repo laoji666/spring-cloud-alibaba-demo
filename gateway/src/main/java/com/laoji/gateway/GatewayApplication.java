@@ -21,6 +21,11 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
+/**
+*
+*  @author: laoji
+*  @date:2020/4/16 11:05
+*/
 @SpringBootApplication
 @EnableDiscoveryClient
 public class GatewayApplication {

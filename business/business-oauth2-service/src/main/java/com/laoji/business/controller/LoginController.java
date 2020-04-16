@@ -1,5 +1,6 @@
 package com.laoji.business.controller;
 
+import com.google.common.collect.Maps;
 import com.laoji.business.BusinessException;
 import com.laoji.business.BusinessStatus;
 import com.laoji.business.feign.ProfileFeign;
@@ -35,7 +36,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -71,14 +71,14 @@ public class LoginController {
 
     @PostMapping(value = "/login")
     public ResponseResult<Map<String,Object>> login(@RequestBody LoginParams loginParams,HttpServletRequest request){
-        Map<String,Object> result= new HashMap<>();
+        Map<String,Object> result= Maps.newHashMap();
         // 验证密码是否正确
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginParams.getUsername());
         if (userDetails == null || !passwordEncoder.matches(loginParams.getPassword(), userDetails.getPassword())) {
             throw new BusinessException(BusinessStatus.ADMIN_PASSWORD);
         }
 
-        Map<String,String> paramsMap= new HashMap<>();
+        Map<String,String> paramsMap= Maps.newHashMap();
         paramsMap.put("username",loginParams.getUsername());
         paramsMap.put("password",loginParams.getPassword());
         paramsMap.put("grant_type",grantType);

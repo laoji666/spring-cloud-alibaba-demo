@@ -9,6 +9,11 @@ import com.laoji.provider.domain.UmsAdminLoginLog;
 */
 public interface UmsAdminLoginLogService {
 
+    /**
+     * 插入数据
+     * @param umsAdminLoginLog
+     * @return
+     */
     int insert(UmsAdminLoginLog umsAdminLoginLog);
 
 }

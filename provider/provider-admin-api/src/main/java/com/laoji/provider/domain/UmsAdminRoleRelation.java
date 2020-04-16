@@ -8,6 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
+/**
+*
+*  @author: laoji
+*  @date:2020/4/16 11:07
+*/
 @Data
 @Table(name = "ums_admin_role_relation")
 public class UmsAdminRoleRelation implements Serializable {

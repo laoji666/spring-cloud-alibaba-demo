@@ -6,6 +6,11 @@ import com.laoji.provider.domain.UmsAdminLoginLog;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.stereotype.Service;
+/**
+*
+*  @author: laoji
+*  @date:2020/4/16 11:04
+*/
 @Service
 public class AdminLoginLogReceive {
     @Reference
