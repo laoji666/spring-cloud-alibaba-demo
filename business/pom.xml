@@ -60,6 +60,7 @@
         </dependency>
     </dependencies>
     <modules>
+
         <module>business-oauth2-feign</module>
         <module>business-oauth2-service</module>
         <module>business-profile-feign</module>
