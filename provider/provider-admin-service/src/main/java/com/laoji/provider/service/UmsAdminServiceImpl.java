@@ -13,6 +13,8 @@ import com.laoji.provider.mapper.UmsRoleMapper;
 import com.laoji.provider.service.fallback.UmsAdminServiceFallback;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
@@ -117,6 +119,7 @@ public class UmsAdminServiceImpl implements UmsAdminService{
     }
 
     @Override
+    @Transactional(rollbackFor={Exception.class})
     public boolean updateRole(List<Integer> newList, Integer adminId) {
         try{
             List<Integer> oldList1 = getRoleByAdminId(adminId);
@@ -155,6 +158,8 @@ public class UmsAdminServiceImpl implements UmsAdminService{
             return true;
         }catch (Exception e){
             e.printStackTrace();
+            //手动回滚
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return false;
         }
     }
