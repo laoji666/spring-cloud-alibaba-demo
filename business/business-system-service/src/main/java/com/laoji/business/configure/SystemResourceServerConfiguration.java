@@ -1,5 +1,7 @@
 package com.laoji.business.configure;
 
+import com.laoji.configuration.RestAuthAccessDeniedHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -27,12 +29,20 @@ public class SystemResourceServerConfiguration extends ResourceServerConfigurerA
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    /**
+     * 注册没有权限的处理器
+     */
+    @Autowired
+    private RestAuthAccessDeniedHandler restAuthAccessDeniedHandler;
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
                 .exceptionHandling()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                //配置没有权限的自定义处理类
+                .exceptionHandling().accessDeniedHandler(restAuthAccessDeniedHandler)
                 .and()
                 .authorizeRequests()
                 .antMatchers("/**").hasAuthority("USER");

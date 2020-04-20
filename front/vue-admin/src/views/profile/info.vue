@@ -10,6 +10,7 @@
       <el-form-item label="用户名">
         <el-input v-model="form.username" />
       </el-form-item>
+
       <el-form-item label="邮箱">
         <el-input v-model="form.email" />
       </el-form-item>
@@ -18,20 +19,6 @@
       </el-form-item>
       <el-form-item label="备注">
         <el-input v-model="form.note" />
-      </el-form-item>
-      <el-form-item label="状态">
-        <el-select v-model="form.status" placeholder="请选择">
-          <el-option
-            :key="0"
-            :label="'禁用'"
-            :value="0">
-          </el-option>
-          <el-option
-            :key="1"
-            :label="'正常'"
-            :value="1">
-          </el-option>
-        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">修改</el-button>
@@ -55,7 +42,6 @@
           email:'',
           nickName:'',
           note:'',
-          status:'',
         }
       }
     },

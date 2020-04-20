@@ -1,6 +1,8 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-text">name: {{ name }}</div>
+
+    <a href="tencent://message/?uin=1026165407&Site=&Menu=yes"><h1>点这里联系我</h1></a>
   </div>
 </template>
 

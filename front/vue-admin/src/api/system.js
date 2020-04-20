@@ -25,3 +25,10 @@ export function updateRole(data,id) {
     data
   })
 }
+export function addAdmin(data) {
+  return request({
+    url: '/system/user/addAdmin',
+    method: 'post',
+    data
+  })
+}

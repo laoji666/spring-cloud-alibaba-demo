@@ -18,5 +18,6 @@
     <modules>
         <module>configuration-feign</module>
         <module>configuration-sentinel</module>
+        <module>configuration-oauth2</module>
     </modules>
 </project>

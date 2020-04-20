@@ -10,6 +10,7 @@ import com.laoji.provider.api.UmsRoleService;
 import com.laoji.provider.domain.UmsAdmin;
 import com.laoji.provider.domain.UmsRole;
 import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -56,7 +57,9 @@ public class SystemUserController {
         }
         return new ResponseResult<List<Integer>>(ResponseResult.OK,"查询成功",roleLists);
     }
+
     @PostMapping(value = "/updateRole")
+    @PreAuthorize("hasAuthority('ums:admin:update')")
     public ResponseResult<Void> updateRole(@RequestBody List<Integer> newList,Integer id){
         System.out.println(newList);
         System.out.println(id);
@@ -66,5 +69,38 @@ public class SystemUserController {
         }else{
             return new ResponseResult<Void>(ResponseResult.FAIL,"修改失败");
         }
+    }
+    @PostMapping(value="/addAdmin")
+    @PreAuthorize("hasAuthority('ums:admin:create')")
+    public ResponseResult<Void> addAdmin(@RequestBody UmsAdmin umsAdmin){
+        String message=validateReg(umsAdmin);
+        if(message==null){
+            //验证通过
+            int result = umsAdminService.insert(umsAdmin);
+            if(result>0){
+                //注册成功
+                return new ResponseResult<Void>(ResponseResult.OK,"添加成功！");
+            }
+        }
+        return new ResponseResult<Void>(ResponseResult.FAIL,message != null ? message : "添加新用户失败");
+    }
+
+    /**
+     * 验证注册信息
+     * @param umsAdmin {@link UmsAdmin}
+     * @return 错误信息
+     */
+    private String validateReg(UmsAdmin umsAdmin) {
+        if(umsAdmin.getUsername()==null||umsAdmin.getUsername().length()<6){
+            return "用户名格式有误或者为空，用户名不能低于六位字符";
+        }
+        if(umsAdmin.getPassword()==null||umsAdmin.getPassword().length()<6){
+            return "密码格式有误或者为空，密码不能低于六位字符";
+        }
+        UmsAdmin admin = umsAdminService.get(umsAdmin.getUsername());
+        if (admin != null) {
+            return "用户名已存在，请重新输入";
+        }
+        return null;
     }
 }

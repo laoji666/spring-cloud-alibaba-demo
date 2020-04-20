@@ -10,7 +10,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 *  @author: laoji
 *  @date:2020/4/14 13:07
 */
-@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class},scanBasePackages = {"com.laoji.configuration"},scanBasePackageClasses = BusinessSystemApplication.class)
 @EnableDiscoveryClient
 public class BusinessSystemApplication {
     public static void main(String[] args) {

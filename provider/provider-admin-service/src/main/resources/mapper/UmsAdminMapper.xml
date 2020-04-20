@@ -25,7 +25,7 @@
     LEFT JOIN ums_admin_role_relation uarr on ua.id=uarr.admin_id
     LEFT JOIN ums_role_permission_relation urpr on urpr.role_id=uarr.role_id
     LEFT JOIN ums_permission up on up.id=urpr.permission_id
-    WHERE ua.username=#{username};
+    WHERE ua.username=#{username} and up.pid != 0;
   </select>
   <select id="getRoleByAdminId" resultType="integer" parameterType="integer">
     select uarr.role_id from ums_admin ua
